@@ -1,0 +1,1 @@
+TARGET_FEATURE = "Survived"

@@ -1,5 +1,4 @@
 import pandas as pd
-from sklearn.linear_model import LogisticRegression
 from responsibleai.managers.counterfactual_manager import CounterfactualConstants
 from raiwidgets import ResponsibleAIDashboard
 from responsibleai import RAIInsights
@@ -8,6 +7,8 @@ import poetry_rai.data.data_paths as data_paths
 import poetry_rai.config.settings as settings
 from poetry_rai.train.train import get_train_model
 
+from poetry_rai.utils.generator_html import HtmlGenerator
+from poetry_rai.utils.generator_pdf import PdfGenerator
 
 def main() -> None:
     # Get datasets
@@ -59,3 +60,18 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+    # Save the dashboard as PDF 
+    pdf_generator = PdfGenerator()
+    pdf_generator.save_from_url(
+        url='http://localhost:5000', 
+        output_file_name="ResponsibleAIDashboard.pdf"
+    )
+    
+    # Save the dashboard as HTML 
+    html_generator = HtmlGenerator()
+    html_generator.save_from_url(
+        url='http://localhost:5000', 
+        output_file_name="ResponsibleAIDashboard.html"
+    )
+    

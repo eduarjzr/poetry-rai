@@ -12,6 +12,7 @@ raiwidgets = "^0.31.0"
 fpdf2 = "^2.7.6"
 selenium = "^4.15.2"
 webdriver-manager = "^4.0.1"
+matplotlib = "^3.8.1"
 
 
 [build-system]

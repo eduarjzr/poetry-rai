@@ -40,10 +40,9 @@ class PdfGenerator:
 
         # Readjust the size of the paper based on the size of the data
         result = self._send_devtools(self.driver, "Page.printToPDF")
-        self.print_options['paperWidth'] = round( len(result['data']) % 11 ) * 10
+        self.print_options['paperWidth'] = round( len(result['data']) / 36872 ) * 11
 
-        result = self._send_devtools(self.driver, "Page.printToPDF", self.print_options)
-    
+        result = self._send_devtools(self.driver, "Page.printToPDF", self.print_options)   
         return base64.b64decode(result['data'])
 
     @staticmethod
